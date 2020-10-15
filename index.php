@@ -1,5 +1,4 @@
 <?php
-require_once 'mysql.php'; // подключаем скрипт
 // подключаемся к серверу
 $$servername = "localhost";
 $username = "root";
