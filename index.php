@@ -1,7 +1,6 @@
 <?php
 echo 'hello';
 // подключаемся к серверу
-/*
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -17,6 +16,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
+/*
 $sql = "SELECT * FROM users";
 $result = $conn->query($sql);
 
@@ -28,6 +28,6 @@ if ($result->num_rows > 0) {
 } else {
   echo "0 results";
 }
-$conn->close();
 */
+$conn->close();
 ?>
