@@ -6,7 +6,9 @@
 	
 	$mysql = new MySQL('localhost', 'root', 'password', 'team');
 
-	print_r($mysql);
+
+	$users = $mysql->get('users');
+	print_r($users);
 	
 	// get all posts
 	/*
