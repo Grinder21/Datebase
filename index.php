@@ -2,7 +2,7 @@
 
 	include_once('mysql.php');
 	
-	$mysql = new MySQL('localhost', 'Grinder21', 'password', 'team');
+	$mysql = new MySQL('localhost', 'root', 'password', 'team');
 	
 	// get all posts
 	try{
