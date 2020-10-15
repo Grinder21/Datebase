@@ -1,18 +1,15 @@
-<?php 
-	$host = 'localhost'; // адрес сервера 
-	$database = 'team'; // имя базы данных
-	$user = 'Grinder21'; // имя пользователя
-	$password = 'password'; // пароль
-?>
 <?php
-require_once 'mysql.php'; // подключаем скрипт
- 
-// подключаемся к серверу
-$link = mysqli_connect($host, $user, $password, $database) 
-    or die("Ошибка " . mysqli_error($link));
- 	echo 'Connect open';
-// выполняем операции с базой данных
-     
-// закрываем подключение
-mysqli_close($link);
+
+	include_once('mysql.php');
+	
+	$mysql = new MySQL('localhost', 'Grinder21', 'password', 'team');
+	
+	// get all posts
+	try{
+		$posts = $mysql->get('users');
+		print_r($posts);
+		echo $mysql->num_rows(); // number of rows returned
+	}catch(Exception $e){
+		echo 'Caught exception: ', $e->getMessage();
+	}
 ?>
