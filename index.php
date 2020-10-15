@@ -1,20 +1,28 @@
 <?php
 require_once 'mysql.php'; // подключаем скрипт
 // подключаемся к серверу
-$link = mysqli_connect('localhost', 'root', 'password', 'team') 
-    or die("Ошибка " . mysqli_error($link));
-// выполняем операции с базой данных
-$query ="SELECT * FROM users";
-$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
-do{
-    echo "ID - ".$myrow['id']."<br>";
-    echo "Заголовок - ".$myrow['title']."<br>";
-    echo "Текст - ".$myrow['text']."<br>";
-}while ($myrow = mysql_fetch_array($result)); 
-if($result)
-{
-    echo "Выполнение запроса прошло успешно";
+$$servername = "localhost";
+$username = "root";
+$password = "password";
+$dbname = "team";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
 }
-// закрываем подключение
-mysqli_close($link);
+
+$sql = "SELECT * FROM users";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "id: " . $row["id"]. " - Name: " . $row["first_name"]. " " . $row["last_name"]. "<br>"  " Email: " . $row["email"]. "<br>" " Password: " . $row["password"]. "<br>";
+  }
+} else {
+  echo "0 results";
+}
+$conn->close();
 ?>
