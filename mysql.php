@@ -15,7 +15,7 @@
 		static private $order;
 		
 		function __construct($host, $user, $pass, $db){
-			self::$connection_info = array('host' => $host, 'user' => $user, 'pass' => $pass, 'db' => $db);
+			self::$connection_info = array('localhost' => $host, 'Grinder21' => $user, 'password' => $pass, 'team' => $db);
 		}
 		
 		function __destruct(){
