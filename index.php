@@ -46,7 +46,7 @@ if ($result->num_rows > 0) {
   echo "0 results";
 }
 */
-mysqli->close();
+$mysqli->close();
 
 ?>
 
@@ -70,4 +70,5 @@ mysqli->close();
 	<p>
 		Password: <input type="password" name="password" />
 	</p>
+	<input type="submit" name="submit" value="Отправить">
 </form>
