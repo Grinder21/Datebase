@@ -1,6 +1,7 @@
 <?php
+echo 'hello';
 // подключаемся к серверу
-
+/*
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -28,4 +29,5 @@ if ($result->num_rows > 0) {
   echo "0 results";
 }
 $conn->close();
+*/
 ?>
