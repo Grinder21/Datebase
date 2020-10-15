@@ -21,7 +21,7 @@ if(isset($_POST['reg'])) {
 	$password = $mysqli->real_escape_string(htmlspecialchars($_POST['password']));
 	$query = "INSERT INTO `users`
 	(`first_name`, `last_name`, `email`, `password`)
-	VALUES ('$name', '$surname', MD5('$password'))";
+	VALUES ('$name', '$surname', '$email', MD5('$password'))";
 	$result = $mysqli->query($query);
 }
 
