@@ -1,23 +1,18 @@
 <?php
-	ini_set('display_errors', '1');
-	ini_set('display_startup_errors', '1');
-	error_reporting(E_ALL);
-	include_once('mysql.php');
-	
-	$mysql = new MySQL('localhost', 'root', 'password', 'team');
-
-
-	$users = $mysql->get('users');
-	print_r($users);
-	
-	// get all posts
-	/*
-	try{
-		$posts = $mysql->get('users');
-		print_r($posts);
-		echo $mysql->num_rows(); // number of rows returned
-	}catch(Exception $e){
-		echo 'Caught exception: ', $e->getMessage();
-	}
-	*/
+require_once 'mysql.php'; // подключаем скрипт
+ 
+// подключаемся к серверу
+$link = mysqli_connect('localhost', 'root', 'password', 'team') 
+    or die("Ошибка " . mysqli_error($link));
+ 
+// выполняем операции с базой данных
+$query ="SELECT * FROM users";
+$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
+if($result)
+{
+    echo "Выполнение запроса прошло успешно";
+}
+ 
+// закрываем подключение
+mysqli_close($link);
 ?>
