@@ -1,13 +1,32 @@
 <?php
 // подключаемся к серверу
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-$servername = "localhost";
-$username = "root";
-$password = "password";
-$dbname = "team";
+define('DB_HOST', 'localhost');
+define('DB_USER', 'user');
+define('DB_PASSWORD', 'root');
+define('DB_NAME', 'team');
 
+
+$mysqli = @new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+if($mysqli->connect_errno) exit ('Ошибка соединения с базой');
+$mysqli->set_charset('utf-8');
+
+
+$mysqli->query("INSERT INTO `users` (`first_name`, `last_name`, `email`, `password`) VALUES ('Mikhail', 'Efremov', 'spa@mail.ru', MD5('123456'));");
+
+
+if(isset($_POST['reg'])) {
+	$name = $mysqli->real_escape_string(htmlspecialchars($_POST['first_name']));
+	$surname = $mysqli->real_escape_string(htmlspecialchars($_POST['last_name']));
+	$email = $mysqli->real_escape_string(htmlspecialchars($_POST['email']));
+	$password = $mysqli->real_escape_string(htmlspecialchars($_POST['password']));
+	$query = "INSERT INTO `users`
+	(`first_name`, `last_name`, `email`, `password`)
+	VALUES ('$name', '$surname', MD5('$password'))";
+	$result = $mysqli->query($query);
+}
+
+
+/*
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -26,6 +45,29 @@ if ($result->num_rows > 0) {
 } else {
   echo "0 results";
 }
-mysqli_close($conn);
+*/
+mysqli->close();
 
 ?>
+
+<?php if (isset($result)) { ?>
+	<?php if($result) { ?>
+		<p>Регистрация прошла успешна!</p>;
+		<?php } else { ?>
+			<p>Ошибка регистрации</p>
+			<?php } ?>
+
+<form name='reg' action='index.php' method='post'>
+	<p>
+		Имя: <input type="text" name="first_name" />
+	</p>
+	<p>
+		Фамилия: <input type="text" name="last_name" />
+	</p>
+	<p>
+		Email: <input type="text" name="email" />
+	</p>
+	<p>
+		Password: <input type="password" name="password" />
+	</p>
+</form>
