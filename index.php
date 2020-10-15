@@ -1,11 +1,4 @@
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-
 <?php
 // подключаемся к серверу
 define('DB_HOST', 'localhost');
@@ -63,9 +56,8 @@ $mysqli->close();
 		<p>Регистрация прошла успешна!</p>;
 		<?php } else { ?>
 			<p>Ошибка регистрации</p>
+		<?php } ?>
 			<?php } ?>
-
-?>
 
 
 	
@@ -84,5 +76,3 @@ $mysqli->close();
 	</p>
 	<input type="submit" name="submit" value="Отправить">
 </form>
-</body>
-</html>
