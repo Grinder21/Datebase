@@ -1,3 +1,11 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
 <?php
 // подключаемся к серверу
 define('DB_HOST', 'localhost');
@@ -56,12 +64,11 @@ $mysqli->close();
 		<?php } else { ?>
 			<p>Ошибка регистрации</p>
 			<?php } ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+
+
+
+
+	
 <form name='reg' action='index.php' method='post'>
 	<p>
 		Имя: <input type="text" name="first_name" />
