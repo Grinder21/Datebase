@@ -6,12 +6,20 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', 'password');
 define('DB_NAME', 'team');
 
+
+$name = $_POST['last_name'];
+$surname = $_POST['first_name'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+
+
 $mysqli = @new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 if($mysqli->connect_errno) exit ('Ошибка соединения с базой');
 $mysqli->set_charset('utf-8');
 
 
-$mysqli->query("INSERT INTO `users` (`first_name`, `last_name`, `email`, `password`) VALUES ('Mikhail', 'Efremov', 'spa@mail.ru', MD5('123456'));");
+$mysqli->query("INSERT INTO users (first_name, last_name, email, password) VALUES ('{$name}', '{$surname}', '{$email}', MD5({$password}));");
 
 
 if(isset($_POST['reg'])) {
