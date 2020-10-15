@@ -56,7 +56,12 @@ $mysqli->close();
 		<?php } else { ?>
 			<p>Ошибка регистрации</p>
 			<?php } ?>
-
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
 <form name='reg' action='index.php' method='post'>
 	<p>
 		Имя: <input type="text" name="first_name" />
@@ -72,3 +77,5 @@ $mysqli->close();
 	</p>
 	<input type="submit" name="submit" value="Отправить">
 </form>
+</body>
+</html>
