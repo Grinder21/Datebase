@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
 		 
 			setcookie("id", $data['id'], time()+60*60*24*30, "/");
     		echo 'Авторизация прошла успешна!';
-    		header("Location: index.php"); exit();
+    		header("Refresh: 3; url=index.php"); exit();
     }
 }
 
