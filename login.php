@@ -31,7 +31,6 @@ if (isset($_POST['submit'])) {
 		 $mysqli->query("SELECT id from users WHERE email = '{$email}' AND password = '{md5($password)}' LIMIT 1;");
 		 
 			setcookie("id", $data['id'], time()+60*60*24*30, "/");
-    		setcookie("hash", $hash, time()+60*60*24*30, "/", null, null, true);
     		echo 'Авторизация прошла успешна!';
     		header("Location: index.php"); exit();
     }
