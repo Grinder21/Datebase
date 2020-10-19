@@ -26,34 +26,18 @@ $mysqli->set_charset('utf-8');
 $error = array();
 $result = mysqli_query("SELECT * FROM users WHERE email={$email}");
 
-if ($_POST['login'] != "" && $_POST['password'] != "") {
-	if (mysql_num_rows($result)) {
-		$row = mysql_fetch_assoc($result);
-		print_r($row);
-		if(md5(md5($password).$row['salt']) == $row['password']) {
-			setcookie ("email", $row['email'], time() + 50000); 						
-		 	setcookie ("password", md5($row['email'].$row['password']), time() + 50000); 					
-			$_SESSION['id'] = $row['id'];			
-
-			$id = $_SESSION['id']; 				
-			lastAct($id);
-			echo 'Вы зарегистрированы!';
-			header('Refresh: 3; url=index.php'); 				
-			return $error;	
-		} else {
-			$error[] = "Неверный пароль"; 										
-			return $error;
-		}
-	} else {
-		$error[] = "Неверный логин и пароль"; 			
-		return $error; 
+if (isset($_POST['submit'])) {
+	if ($_POST['login'] != "" && $_POST['password'] != "") {
+		 $mysqli->query("INSERT INTO users (email, password) VALUES ({$email}', MD5({$password}));");
+		  if($data['user_password'] === md5(md5($_POST['password']))) {
+    			setcookie("id", $data['user_id'], time()+60*60*24*30, "/");
+        		setcookie("hash", $hash, time()+60*60*24*30, "/", null, null, true);
+        		header("Location: index.php"); exit();
+    		} else {
+        		print "Вы ввели неправильный логин/пароль";
+    		}
 	}
-} else {
-	$error[] = "Поля не должны быть пустыми!"; 				
-		return $error;
 }
-
-
 
 $mysqli->close();
 
