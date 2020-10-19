@@ -27,7 +27,7 @@ $error = array();
 $result = mysqli_query("SELECT * FROM users WHERE email={$email}");
 
 if (isset($_POST['submit'])) {
-	if ($_POST['login'] != "" && $_POST['password'] != "") {
+	if ($_POST['email'] != "" && $_POST['password'] != "") {
 		 $mysqli->query("SELECT id from users WHERE email = '{$email}' AND password = '{md5($password)}' LIMIT 1;");
 		 
 			setcookie("id", $data['id'], time()+60*60*24*30, "/");
