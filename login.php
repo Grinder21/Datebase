@@ -37,8 +37,10 @@ if ($_POST['login'] != "" && $_POST['password'] != "") {
 			$_SESSION['id'] = $row['id'];			
 
 			$id = $_SESSION['id']; 				
-			lastAct($id); 				
-			return $error; 		
+			lastAct($id);
+			echo 'Вы зарегистрированы!';
+			header('Refresh: 3; url=index.php'); 				
+			return $error;	
 		} else {
 			$error[] = "Неверный пароль"; 										
 			return $error;
