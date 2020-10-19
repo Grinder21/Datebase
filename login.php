@@ -27,13 +27,14 @@ $error = array();
 $result = mysqli_query("SELECT * FROM users WHERE email={$email}");
 
 if (isset($_POST['submit'])) {
-	echo 'Данные пришли';
 	if ($_POST['login'] != "" && $_POST['password'] != "") {
 		 $mysqli->query("INSERT INTO users (email, password) VALUES ({$email}', MD5({$password}));");
 		  if($data['password'] === md5(md5($_POST['password']))) {
     			setcookie("id", $data['id'], time()+60*60*24*30, "/");
         		setcookie("hash", $hash, time()+60*60*24*30, "/", null, null, true);
+        		echo 'Авторизация прошла успешна!';
         		header("Location: index.php"); exit();
+
     		} else {
         		print "Вы ввели неправильный логин/пароль";
     		}
