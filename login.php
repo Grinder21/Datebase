@@ -27,11 +27,10 @@ $error = array();
 $result = mysqli_query("SELECT * FROM users WHERE email={$email}");
 
 if ($_POST['login'] != "" && $_POST['password'] != "") {
-	if (mysql_num_rows($result) == 1) {
+	if (mysql_num_rows($result)) {
 		$row = mysql_fetch_assoc($result);
 		print_r($row);
-		if(md5(md5($password).$row['salt']) == $row['password'])
-		{
+		if(md5(md5($password).$row['salt']) == $row['password']) {
 			setcookie ("email", $row['email'], time() + 50000); 						
 		 	setcookie ("password", md5($row['email'].$row['password']), time() + 50000); 					
 			$_SESSION['id'] = $row['id'];			
