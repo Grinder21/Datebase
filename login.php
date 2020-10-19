@@ -1,3 +1,13 @@
+<form name='log' action='login.php' method='post'>
+	<p>
+		Email: <input type="text" name="email" />
+	</p>
+	<p>
+		Password: <input type="password" name="password" />
+	</p>
+	<input type="submit" name="submit" value="Отправить">
+</form>
+
 
 <?php
 // подключаемся к серверу
@@ -47,17 +57,3 @@ if ($_POST['login'] != "" && $_POST['password'] != "") {
 $mysqli->close();
 
 ?>
-
-
-
-
-	
-<form name='log' action='login.php' method='post'>
-	<p>
-		Email: <input type="text" name="email" />
-	</p>
-	<p>
-		Password: <input type="password" name="password" />
-	</p>
-	<input type="submit" name="submit" value="Отправить">
-</form>
