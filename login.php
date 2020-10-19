@@ -27,6 +27,7 @@ $error = array();
 $result = mysqli_query("SELECT * FROM users WHERE email={$email}");
 
 if (isset($_POST['submit'])) {
+	echo 'Данные пришли';
 	if ($_POST['login'] != "" && $_POST['password'] != "") {
 		 $mysqli->query("INSERT INTO users (email, password) VALUES ({$email}', MD5({$password}));");
 		  if($data['password'] === md5(md5($_POST['password']))) {
