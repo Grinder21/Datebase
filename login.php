@@ -15,6 +15,8 @@ if($mysqli->connect_errno) exit ('Ошибка соединения с базо�
 $mysqli->set_charset('utf-8');
 $error = array();
 $result = mysqli_query("SELECT * FROM users WHERE email={$email}");
+print_r($email);
+print_r($result);
 
 // if ($_POST['login'] != "" && $_POST['password'] != "") {
 // 	if (mysql_num_rows($result) == 1) {
