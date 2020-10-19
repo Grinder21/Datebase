@@ -34,11 +34,7 @@ if (isset($_POST['submit'])) {
     		setcookie("hash", $hash, time()+60*60*24*30, "/", null, null, true);
     		echo 'Авторизация прошла успешна!';
     		header("Location: index.php"); exit();
-
-		else {
-    		print "Вы ввели неправильный логин/пароль";
-		}
-	}
+    }
 }
 
 $mysqli->close();
