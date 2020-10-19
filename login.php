@@ -14,8 +14,7 @@ $mysqli = @new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 if($mysqli->connect_errno) exit ('Ошибка соединения с базой');
 $mysqli->set_charset('utf-8');
 $error = array();
-$result = mysqli_query("SELECT * FROM users WHERE email=$email");
-print_r($result);
+$result = mysqli_query("SELECT * FROM users WHERE email={$email}");
 
 // if ($_POST['login'] != "" && $_POST['password'] != "") {
 // 	if (mysql_num_rows($result) == 1) {
